@@ -1,0 +1,8 @@
+#!/bin/sh
+
+feh --bg-scale --no-fehbg ~/Pictures/wallpapers/512139-1920x1080.jpg
+#while true; do
+#  feh --randomize --bg-scale --no-fehbg ~/Pictures/wallpapers/512139-1920x1080.jpg
+#  delay=$(((RANDOM % 7200) + 3600))
+#  sleep $delay
+#done
