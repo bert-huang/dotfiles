@@ -47,6 +47,9 @@ set $rofi_window rofi -modi window,drun -bw 4 -line-margin 4 -separator-style no
 bindsym Mod1+space exec "$rofi_window"
 bindsym $mod+space exec "$rofi_drun" 
 
+# printscr
+bindsym --release Print exec "scrot -s -e 'mv $f /home/bert/Pictures/screenshots'"
+
 ### Multimedia Support
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
