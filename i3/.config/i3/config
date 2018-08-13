@@ -40,7 +40,7 @@ floating_modifier $mod
 
 ### INTERFACE COMMANDS
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec uxterm
 # rofi
 set $rofi_drun rofi -modi window,drun -bw 4 -line-margin 4 -separator-style none -sidebar-mode -font 'Meslo LG S DZ 12' -width 60 -hide-scrollbar -lines 11 -show drun
 set $rofi_window rofi -modi window,drun -bw 4 -line-margin 4 -separator-style none -sidebar-mode -font 'Meslo LG S DZ 12' -width 60 -hide-scrollbar -lines 11 -show window
