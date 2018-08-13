@@ -44,7 +44,7 @@ font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3 
 modules-center = 
-modules-right = cpu memory date volume backlight
+modules-right = cpu memory date volume
 tray-position =
 tray-padding = 2 
 ;tray-transparent = true
@@ -86,7 +86,7 @@ font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3
 modules-center = 
-modules-right = cpu memory date volume backlight
+modules-right = cpu memory date volume
 ;modules-right = kiwi-services kiwi-rev kiwi-data
 
 tray-position = right
@@ -315,7 +315,7 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 label-volume-foreground = ${root.foreground}
 
-label-muted = "  muted"
+label-muted = "  muted     "
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
