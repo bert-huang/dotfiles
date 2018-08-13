@@ -55,14 +55,27 @@
 *color7:                S_base2
 *color15:               S_base3
 
-ranger*faceName: Source Code Pro,Source Code Pro Semibold
-ranger*faceSize: 11
+ranger*faceName: DejaVu Sans Mono
+ranger*faceSize: 12
 
-xterm*faceName: Source Code Pro,Source Code Pro Semibold                                       
-xterm*faceSize: 11
-xterm*VT100.Translations: #override \
-                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+XTerm.termName: xterm-256color
+XTerm*renderFont: true
+XTerm*faceName: DejaVu Sans Mono
+XTerm*faceSize: 12
+XTerm.VT100.metaSendsEscape: true
+XTerm.VT100.saveLines: 100000
+
+UXTerm.termName: xterm-256color
+UXTerm*renderFont: true
+UXTerm*faceName: DejaVu Sans Mono
+UXTerm*faceSize: 12
+UXTerm.VT100.metaSendsEscape: true
+UXTerm.VT100.saveLines: 100000
+UXTerm*VT100.Translations: #override \
+    Ctrl Shift <Key> V: insert-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key> C: copy-selection(CLIPBOARD) \n\
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> plus: larger-vt-font()
 
 rofi.color-enabled: true
 rofi.color-window: argb:F2273238, argb:F2273238, argb:F21e2529
