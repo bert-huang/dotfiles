@@ -23,3 +23,8 @@ C_LCYAN='\033[01;36m'
 C_WHITE='\033[01;37m'
 
 export EDITOR='/usr/bin/nvim'
+
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+export HISTFILE=$HOME/.bash_perm_history
