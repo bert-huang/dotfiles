@@ -8,8 +8,8 @@
 ;=====================================================
 
 [system]
-monitor1 = ${env:MONITOR:HDMI-0}
-monitor2 = ${env:MONITOR:DVI-D-0}
+monitor1 = ${env:MONITOR:DP-1}
+monitor2 = ${env:MONITOR:HDMI-0}
 
 [colors]
 ;background = ${xrdb:color0:#222}

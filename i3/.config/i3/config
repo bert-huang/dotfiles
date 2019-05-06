@@ -114,16 +114,16 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
-workspace $ws5 output HDMI-0
-workspace $ws6 output HDMI-0
-workspace $ws7 output HDMI-0
-workspace $ws8 output HDMI-0
-workspace $ws9 output HDMI-0
-workspace $ws10 output HDMI-0
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output DP-1
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
+workspace $ws6 output DP-1
+workspace $ws7 output DP-1
+workspace $ws8 output DP-1
+workspace $ws9 output DP-1
+workspace $ws10 output DP-1
 
 # switch to workspace we can name these workspaces
 bindsym $mod+1 workspace $ws1
@@ -163,18 +163,18 @@ set $wsF10 "20:F10"
 set $wsF11 "21:F11"
 set $wsF12 "22:F12"
 
-workspace $wsF1 output DVI-D-0
-workspace $wsF2 output DVI-D-0
-workspace $wsF3 output DVI-D-0
-workspace $wsF4 output DVI-D-0
-workspace $wsF5 output DVI-D-0
-workspace $wsF6 output DVI-D-0
-workspace $wsF7 output DVI-D-0
-workspace $wsF8 output DVI-D-0
-workspace $wsF9 output DVI-D-0
-workspace $wsF10 output DVI-D-0
-workspace $wsF11 output DVI-D-0
-workspace $wsF12 output DVI-D-0
+workspace $wsF1 output HDMI-0
+workspace $wsF2 output HDMI-0
+workspace $wsF3 output HDMI-0
+workspace $wsF4 output HDMI-0
+workspace $wsF5 output HDMI-0
+workspace $wsF6 output HDMI-0
+workspace $wsF7 output HDMI-0
+workspace $wsF8 output HDMI-0
+workspace $wsF9 output HDMI-0
+workspace $wsF10 output HDMI-0
+workspace $wsF11 output HDMI-0
+workspace $wsF12 output HDMI-0
 
 # switch to workspace we can name these workspaces
 bindsym $mod+F1 workspace $wsF1
@@ -289,6 +289,9 @@ exec --no-startup-id compton
 exec_always nitrogen --restore
 exec xcape -e '#66=Escape'
 exec redshift-gtk
+
+assign [class="discord"] $wsF12
+exec discord
 
 #assign [class="Thunderbird"] $wsF11
 #exec thunderbird

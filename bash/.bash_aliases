@@ -25,3 +25,5 @@ alias cls='clear'
 alias c='xclip -selection clipboard'
 alias p='xclip -selection clipboard -o'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+alias docker='sudo /usr/bin/docker'
