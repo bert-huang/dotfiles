@@ -4,9 +4,8 @@
 export PATH=${HOME}/.yarn/bin:${HOME}/.npm/.npm-global/bin:$PATH
 
 # Font Weight
-F_BOLD=$(tput bold)
-F_NORM=$(tput sgr0)
-
+F_BOLD=`tput bold`
+F_NORM=`tput sgr0`
 
 # Colours
 C_RESTORE='\033[0m'
@@ -25,10 +24,17 @@ C_LPURPLE='\033[01;35m'
 C_LCYAN='\033[01;36m'
 C_WHITE='\033[01;37m'
 
-export EDITOR='/usr/bin/nvim'
+export EDITOR=`which nvim`
 export JAVA_HOME='/usr/lib/jvm/default'
 
 export HISTFILESIZE=
 export HISTSIZE=
 export HISTTIMEFORMAT="[%F %T] "
 export HISTFILE=$HOME/.bash_perm_history
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  . "`brew --prefix`/etc/bash_completion"
+else
+  :
+fi
+
