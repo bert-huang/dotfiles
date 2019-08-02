@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# PATH
-export PATH=${HOME}/.yarn/bin:${HOME}/.npm/.npm-global/bin:$PATH
-
 # Font Weight
 F_BOLD=`tput bold`
 F_NORM=`tput sgr0`
@@ -25,16 +22,44 @@ C_LCYAN='\033[01;36m'
 C_WHITE='\033[01;37m'
 
 export EDITOR=`which nvim`
-export JAVA_HOME='/usr/lib/jvm/default'
 
-export HISTFILESIZE=
-export HISTSIZE=
-export HISTTIMEFORMAT="[%F %T] "
-export HISTFILE=$HOME/.bash_perm_history
+#export HISTFILESIZE=
+#export HISTSIZE=
+#export HISTTIMEFORMAT="[%F %T] "
+#export HISTFILE=$HOME/.bash_perm_history
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   . "`brew --prefix`/etc/bash_completion"
 else
   :
 fi
+
+export PATH=$HOME/.local/bin:$PATH
+
+# Java
+export JAVA_HOME='/usr/lib/jvm/current'
+export PATH=$JAVA_HOME/bin:$PATH
+
+# NPM
+NPM_GLOBAL=$HOME/.local/share/npm-global
+export PATH=$NPM_GLOBAL/bin:$PATH
+
+# Kiwiplan
+JENKINS_HOME=/home/bert.huang/builds/builder
+KWSQL_USER=test
+KWSQL_PASS=test
+MAVEN_MISC=$HOME/projects/maven-misc
+KIWI=/kiwi
+DATA=$KIWI/data
+PROGS=$KIWI/progs
+SQL=$KIWI/sql
+SCP=$KIWI/scp
+BIN=$KIWI/bin
+KIWISEA=$DATA:$PROGS:$SQL:$SCP:$BIN
+JAVALIBPATH=$DATA
+LD_LIBRARY_PATH=$PROGS
+export MAVEN_MISC
+export KIWI DATA PROGS SQL SCP BIN JAVALIBPATH LD_LIBRARY_PATH KIWISEA JENKINS_HOME
+export PATH=$KIWISEA:$MAVEN_MISC/bin:$PATH
+. $HOME/.local/bin/kiwiftn
 
