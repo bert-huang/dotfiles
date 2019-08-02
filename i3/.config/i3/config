@@ -40,25 +40,27 @@ floating_modifier $mod
 
 ### INTERFACE COMMANDS
 # start a terminal
-bindsym $mod+Return exec uxterm
+bindsym $mod+Return exec gnome-terminal
 # rofi
 set $rofi_drun rofi -modi window,drun -bw 4 -line-margin 4 -separator-style none -sidebar-mode -font 'Meslo LG S DZ 12' -width 60 -hide-scrollbar -lines 11 -show drun
 set $rofi_window rofi -modi window,drun -bw 4 -line-margin 4 -separator-style none -sidebar-mode -font 'Meslo LG S DZ 12' -width 60 -hide-scrollbar -lines 11 -show window
 bindsym Mod1+space exec "$rofi_window"
 bindsym $mod+space exec "$rofi_drun" 
 
+# lock
+bindsym $mod+l exec gnome-screensaver-command -l
 # printscr
-bindsym --release Print exec "scrot -s -e 'mv $f /home/bert/Pictures/screenshots'"
+bindsym --release Print exec "scrot -s -e 'mv $f ~/Pictures/screenshots/$f'"
 
 ### Multimedia Support
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -114,16 +116,16 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 output DP-1
-workspace $ws2 output DP-1
-workspace $ws3 output DP-1
-workspace $ws4 output DP-1
-workspace $ws5 output DP-1
-workspace $ws6 output DP-1
-workspace $ws7 output DP-1
-workspace $ws8 output DP-1
-workspace $ws9 output DP-1
-workspace $ws10 output DP-1
+workspace $ws1 output eDP1
+workspace $ws2 output eDP1
+workspace $ws3 output eDP1
+workspace $ws4 output eDP1
+workspace $ws5 output eDP1
+workspace $ws6 output eDP1
+workspace $ws7 output eDP1
+workspace $ws8 output eDP1
+workspace $ws9 output eDP1
+workspace $ws10 output eDP1
 
 # switch to workspace we can name these workspaces
 bindsym $mod+1 workspace $ws1
@@ -163,18 +165,18 @@ set $wsF10 "20:F10"
 set $wsF11 "21:F11"
 set $wsF12 "22:F12"
 
-workspace $wsF1 output HDMI-0
-workspace $wsF2 output HDMI-0
-workspace $wsF3 output HDMI-0
-workspace $wsF4 output HDMI-0
-workspace $wsF5 output HDMI-0
-workspace $wsF6 output HDMI-0
-workspace $wsF7 output HDMI-0
-workspace $wsF8 output HDMI-0
-workspace $wsF9 output HDMI-0
-workspace $wsF10 output HDMI-0
-workspace $wsF11 output HDMI-0
-workspace $wsF12 output HDMI-0
+workspace $wsF1 output HDMI1
+workspace $wsF2 output HDMI1
+workspace $wsF3 output HDMI1
+workspace $wsF4 output HDMI1
+workspace $wsF5 output HDMI1
+workspace $wsF6 output HDMI1
+workspace $wsF7 output HDMI1
+workspace $wsF8 output HDMI1
+workspace $wsF9 output HDMI1
+workspace $wsF10 output HDMI1
+workspace $wsF11 output HDMI1
+workspace $wsF12 output HDMI1
 
 # switch to workspace we can name these workspaces
 bindsym $mod+F1 workspace $wsF1
@@ -221,7 +223,7 @@ set $midX 963
 
 # Gaps config
 #smart_gaps on
-gaps inner 6 
+gaps inner 3
 #gaps outer 2
 # Arc Colors
 set $bg-color 	         #2f343f
@@ -285,13 +287,13 @@ bindsym $mod+r mode "resize"
 
 ### STARTUP APPLICATIONS
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id compton
+exec_always--no-startup-id compton
 exec_always nitrogen --restore
 exec xcape -e '#66=Escape'
-exec redshift-gtk
+#exec redshift-gtk
 
-assign [class="discord"] $wsF12
-exec discord
+#assign [class="discord"] $wsF12
+#exec discord
 
 #assign [class="Thunderbird"] $wsF11
 #exec thunderbird
