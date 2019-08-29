@@ -50,3 +50,6 @@ alias svnM='svn status | grep "^\s*M" | cut -dM -f2 | xargs'
 alias touchall='find . -type f -exec touch {} \;'
 alias base='readlink -f /kiwi/revisions/current'
 alias sl='/usr/games/sl -e'
+
+alias connect-hdmi='xrandr --output HDMI1 --auto --right-of eDP1'
+
