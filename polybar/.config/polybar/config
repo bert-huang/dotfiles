@@ -85,9 +85,9 @@ font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3
-modules-center = 
-modules-right = cpu memory date volume
 ;modules-right = kiwi-services kiwi-rev kiwi-data
+modules-center = cpu memory date wlan battery filesystem
+modules-right = xbacklight volume powermenu
 
 tray-position = right
 tray-padding = 2 
