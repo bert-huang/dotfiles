@@ -8,8 +8,8 @@
 ;=====================================================
 
 [system]
-monitor1 = ${env:MONITOR:DP-1}
-monitor2 = ${env:MONITOR:HDMI-0}
+monitor1 = ${env:MONITOR:eDP1}
+monitor2 = ${env:MONITOR:HDMI1}
 
 [colors]
 ;background = ${xrdb:color0:#222}
@@ -25,7 +25,7 @@ alert = #bd2c40
 [bar/bar1]
 monitor = ${system.monitor1}
 width = 100%
-height = 25
+height = 32
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-size = 3
@@ -43,9 +43,9 @@ font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3 
-modules-center = 
-modules-right = cpu memory date volume
-tray-position =
+modules-center = cpu memory date wlan battery filesystem
+modules-right = xbacklight volume powermenu
+tray-position = right
 tray-padding = 2 
 ;tray-transparent = true
 ;tray-background = #0063ff
@@ -57,7 +57,7 @@ wm-restack = i3
 [bar/bar2]
 monitor = ${system.monitor2}
 width = 100%
-height = 25
+height = 32
 ;offset-x = 130
 ;offset-y = 1%
 ;radius-bottom = 6.0
@@ -123,9 +123,10 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted-underline = #9b59b6
+label-mounted = %{F#888}%{F-} %used% - %percentage_used%%
 label-unmounted = %mountpoint% not mounted
+label-unmounted-underline = #9b59b6
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
@@ -205,7 +206,8 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = 
+label-font = 6
 
 bar-width = 10
 bar-indicator = |
@@ -225,42 +227,42 @@ card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = "  "
+interval = 3
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #b58900
+format-underline = #c0392b
 label = %percentage:3%%
 label-font = 5
 
 [module/memory]
 type = internal/memory
-interval = 2
-format-prefix = "  "
+interval = 5
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #859900
+format-underline = #e67e22
 label = %percentage_used:3%%
-label-font = 5
+label-font = 3
 
 [module/wlan]
 type = internal/network
-interface = 
-interval = 3.0
+interface = wlp2s0
+interval = 5
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
+format-connected-underline = #27ae60
+label-connected = "%essid% %downspeed:9%"
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+;format-disconnected =
+format-disconnected = <label-disconnected>
+format-disconnected-underline = #27ae60
+label-disconnected =  %ifname% 
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/backlight]
@@ -275,11 +277,11 @@ format-prefix = " "
 
 label = %output%
 label-foreground = ${colors.fg}
-format-padding = 1
+format-padding = 0
 
 [module/eth]
 type = internal/network
-interface = 
+interface = enp0s31f6
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -296,12 +298,12 @@ format-disconnected =
 [module/date]
 type = internal/date
 interval = 1
-date = "  %Y-%m-%d"
-time = " %H:%M:%S "
+date = %{F#888} %{F-} %Y-%m-%d
+time = %{F#888}%{F-} %H:%M:%S
 format = %{A1:~/.config/polybar/on_date_clicked:} <label> %{A}
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #268bd2
+format-underline = #f1c40f
 label = %date% %time%
 label-font = 5
 
@@ -315,7 +317,7 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 label-volume-foreground = ${root.foreground}
 
-label-muted = "  muted     "
+label-muted = " muted   "
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -341,23 +343,27 @@ adapter = ADP-1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #2980b9
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #2980b9
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full-underline = #2980b9
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
@@ -383,29 +389,35 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/menu
 
-format-spacing = 1
+expand-right = false
+format-spacing = 0
 
-label-open = 
+label-open = 
+;label-open = 
 ;label-open-foreground = ${colors.secondary}
-label-close = cancel
+label-close = 
 ;label-close-foreground = ${colors.secondary}
-label-separator = |
+label-separator = " | "
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
+menu-0-0 = 
+menu-0-0-exec = gnome-screensaver-command -l
+menu-0-1 = 
+menu-0-1-exec = systemctl suspend
+menu-0-2 = 
+menu-0-2-exec = systemctl reboot
+menu-0-3 = 
+menu-0-3-exec = systemctl poweroff
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+;menu-1-0 = cancel
+;menu-1-0-exec = menu-open-0
+;menu-1-1 = reboot
+;menu-1-1-exec = sudo reboot
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+;menu-2-0 = power off
+;menu-2-0-exec = sudo poweroff
+;menu-2-1 = cancel
+;menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
