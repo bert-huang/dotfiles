@@ -35,9 +35,8 @@ alias mdc='mvn dependency:copy-dependencies'
 alias mda='mvn dependency:analyze'
 alias mpc='mvn project:prepareclient'
 
-alias j6='export JAVA_HOME=/usr/lib/jvm/java-6-oracle'
-alias j7='export JAVA_HOME=/usr/lib/jvm/java-7-oracle'
-alias j8='export JAVA_HOME=/usr/lib/jvm/java-8-oracle'
+alias j8="ln -nfs /usr/lib/jvm/java-8-oracle $HOME/.java_home"
+alias j11="ln -nfs /usr/lib/jvm/adoptopenjdk-11-hotspot-amd64 $HOME/.java_home"
 
 alias ksqlnochk='export KWSQL_NOCHECK=true'
 
@@ -51,5 +50,9 @@ alias touchall='find . -type f -exec touch {} \;'
 alias base='readlink -f /kiwi/revisions/current'
 alias sl='/usr/games/sl -e'
 
-alias connect-hdmi='xrandr --output HDMI1 --auto --right-of eDP1'
+alias connect='xrandr --output HDMI1 --auto --right-of eDP1'
+alias disconnect='xrandr --output HDMI1 --off'
+
+alias ovpn-kiwiplan='sudo openvpn --config $HOME/.local/ovpn/kiwiplan.ovpn'
+alias ovpn-hoiho='sudo openvpn --config $HOME/.local/ovpn/hoiho.ovpn'
 
