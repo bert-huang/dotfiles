@@ -43,7 +43,7 @@ font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3 
-modules-center = cpu memory date wlan battery filesystem
+modules-center = cpu memory date wlan battery filesystem ovpn
 modules-right = xbacklight volume powermenu
 tray-position = right
 tray-padding = 2 
@@ -86,7 +86,7 @@ font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3
 ;modules-right = kiwi-services kiwi-rev kiwi-data
-modules-center = cpu memory date wlan battery filesystem
+modules-center = cpu memory date wlan battery filesystem ovpn
 modules-right = xbacklight volume powermenu
 
 tray-position = right
@@ -124,7 +124,7 @@ interval = 25
 
 mount-0 = /
 label-mounted-underline = #9b59b6
-label-mounted = %{F#888}%{F-} %used% - %percentage_used%%
+label-mounted = %{A1:~/.config/polybar/fs.sh:}%{F#888}%{F-} %used% - %percentage_used%% %{A}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-underline = #9b59b6
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -227,17 +227,30 @@ card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
-interval = 3
-format-prefix = 
+interval = 2
+format = %{A1:~/.config/polybar/system.sh:} <label> %{A}
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #c0392b
 label = %percentage:3%%
 label-font = 5
 
+; Spacing between individual per-core ramps
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
 [module/memory]
 type = internal/memory
-interval = 5
-format-prefix = 
+interval = 2
+format = %{A1:~/.config/polybar/system.sh:} <label> %{A}
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #e67e22
 label = %percentage_used:3%%
@@ -248,9 +261,9 @@ type = internal/network
 interface = wlp2s0
 interval = 5
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = %{A1:~/.config/polybar/network.sh:}<ramp-signal> <label-connected>%{A}
 format-connected-underline = #27ae60
-label-connected = "%essid% %downspeed:9%"
+label-connected = "%essid% %local_ip% %downspeed:9%"
 
 ;format-disconnected =
 format-disconnected = <label-disconnected>
@@ -265,19 +278,14 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/backlight]
+[module/ovpn]
 type = custom/script
-interval = 0.2
-exec = ~/.config/polybar/backlight.sh
-
-scroll-up = exec light -A 5
-scroll-down = exec light -U 5
-
-format-prefix = " "
-
-label = %output%
-label-foreground = ${colors.fg}
-format-padding = 0
+exec = ~/.config/polybar/ovpn.sh
+exec-if = pgrep -x openvpn
+interval = 10
+format-underline = #268bd2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
@@ -298,9 +306,9 @@ format-disconnected =
 [module/date]
 type = internal/date
 interval = 1
-date = %{F#888} %{F-} %Y-%m-%d
+date = %{F#888} %{F-} %Y-%m-%d
 time = %{F#888}%{F-} %H:%M:%S
-format = %{A1:~/.config/polybar/on_date_clicked:} <label> %{A}
+format = %{A1:~/.config/polybar/date.sh:} <label> %{A}
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f1c40f
@@ -311,13 +319,13 @@ label-font = 5
 [module/volume]
 type = internal/volume
 
-format-volume = <ramp-volume> <bar-volume>
+format-volume = %{A3:~/.config/polybar/audio.sh:}<ramp-volume> <bar-volume>%{A}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 label-volume-foreground = ${root.foreground}
 
-label-muted = " muted   "
+label-muted = %{A3:~/.config/polybar/audio.sh:} muted %{A}
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
