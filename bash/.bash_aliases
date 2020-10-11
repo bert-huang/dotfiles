@@ -18,7 +18,7 @@ else
   alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 fi
 
-alias ll='ls -alFh'
+alias ll='ls -lFh'
 alias la='ls -Ah'
 alias l='ls -lrth'
 alias lt='ls -lrth'
@@ -53,6 +53,8 @@ alias sl='/usr/games/sl -e'
 alias connect='xrandr --output HDMI1 --auto --right-of eDP1'
 alias disconnect='xrandr --output HDMI1 --off'
 
-alias ovpn-kiwiplan='sudo openvpn --config $HOME/.local/ovpn/kiwiplan.ovpn'
+alias ovpn-kiwiplan='sudo openvpn --config $HOME/.local/ovpn/kiwiplan.ovpn --auth-user-pass $HOME/.local/ovpn/pass.txt '
 alias ovpn-hoiho='sudo openvpn --config $HOME/.local/ovpn/hoiho.ovpn'
 
+alias mkdir='mkdir -p'
+alias my='mysql -utest -ptest'
