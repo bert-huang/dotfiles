@@ -43,7 +43,7 @@ font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3 
-modules-center = cpu memory date wlan battery filesystem ovpn
+modules-center = cpu memory date eth wlan battery filesystem ovpn
 modules-right = xbacklight volume powermenu
 tray-position = right
 tray-padding = 2 
@@ -86,7 +86,7 @@ font-4 = siji:pixelsize=10;1
 font-5 = Meslo LG S DZ:size=10;0
 modules-left = i3
 ;modules-right = kiwi-services kiwi-rev kiwi-data
-modules-center = cpu memory date wlan battery filesystem ovpn
+modules-center = cpu memory date eth wlan battery filesystem ovpn
 modules-right = xbacklight volume powermenu
 
 tray-position = right
@@ -265,10 +265,10 @@ format-connected = %{A1:~/.config/polybar/network.sh:}<ramp-signal> <label-conne
 format-connected-underline = #27ae60
 label-connected = "%essid% %local_ip% %downspeed:9%"
 
-;format-disconnected =
-format-disconnected = <label-disconnected>
-format-disconnected-underline = #27ae60
-label-disconnected =  %ifname% 
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = #27ae60
+;label-disconnected =  %ifname% 
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
@@ -278,22 +278,13 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/ovpn]
-type = custom/script
-exec = ~/.config/polybar/ovpn.sh
-exec-if = pgrep -x openvpn
-interval = 10
-format-underline = #268bd2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-
 [module/eth]
 type = internal/network
 interface = enp0s31f6
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -302,6 +293,15 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/ovpn]
+type = custom/script
+exec = ~/.config/polybar/ovpn.sh
+exec-if = pgrep -x openvpn
+interval = 10
+format-underline = #c0392b
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date

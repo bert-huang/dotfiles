@@ -35,8 +35,9 @@ alias mdc='mvn dependency:copy-dependencies'
 alias mda='mvn dependency:analyze'
 alias mpc='mvn project:prepareclient'
 
-alias j8="ln -nfs /usr/lib/jvm/java-8-oracle $HOME/.java_home"
-alias j11="ln -nfs /usr/lib/jvm/adoptopenjdk-11-hotspot-amd64 $HOME/.java_home"
+alias j8="export JAVA_HOME=/usr/lib/jvm/java-8-oracle"
+alias j11a="export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-11-hotspot-amd64"
+alias j11o="export JAVA_HOME=/usr/lib/jvm/jdk-11.0.9"
 
 alias ksqlnochk='export KWSQL_NOCHECK=true'
 
@@ -50,11 +51,13 @@ alias touchall='find . -type f -exec touch {} \;'
 alias base='readlink -f /kiwi/revisions/current'
 alias sl='/usr/games/sl -e'
 
-alias connect='xrandr --output HDMI1 --auto --right-of eDP1'
-alias disconnect='xrandr --output HDMI1 --off'
+alias display-clone='xrandr --output HDMI1 --same-as eDP1 --mode 1920x1080 --scale 1x1'
+alias display-extend='xrandr --output HDMI1 --auto --right-of eDP1'
+alias display-self='xrandr --output HDMI1 --off'
 
 alias ovpn-kiwiplan='sudo openvpn --config $HOME/.local/ovpn/kiwiplan.ovpn --auth-user-pass $HOME/.local/ovpn/pass.txt '
 alias ovpn-hoiho='sudo openvpn --config $HOME/.local/ovpn/hoiho.ovpn'
 
 alias mkdir='mkdir -p'
 alias my='mysql -utest -ptest'
+alias code='code --disable-gpu'

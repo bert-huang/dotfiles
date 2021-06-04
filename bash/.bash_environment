@@ -37,7 +37,7 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 
 # Java
-export JAVA_HOME="$HOME/.java_home"
+export JAVA_HOME="/usr/lib/jvm/jdk-11.0.9"
 export M2_HOME="$HOME/.m2_home"
 export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
@@ -49,6 +49,8 @@ export PATH=$NPM_GLOBAL/bin:$PATH
 TERM=xterm
 KWSQL_USER=test
 KWSQL_PASS=test
+export DBAPASS=test
+export DBAUSER=test
 MAVEN_MISC=$HOME/projects/maven-misc
 KIWI=/kiwi
 DATA=$KIWI/data

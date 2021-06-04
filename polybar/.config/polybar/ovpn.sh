@@ -12,7 +12,7 @@ function displaytime {
 PID=$(pgrep -x openvpn)
 if [[ $? == 0 ]]
 then
-  VPN_CONFIG_FILE="$(ps -o "command" --no-headers ${PID} | awk -F/ '{print $NF}'| cut -d. -f1)"
+  VPN_CONFIG_FILE="$(ps -o "command" --no-headers ${PID} | grep -Po '(/[a-zA-Z0-9].*\.ovpn)' | awk -F/ '{print $NF}')"
   UPTIME="$(displaytime $(ps -o "etimes" --no-headers ${PID}))"
   echo "${VPN_CONFIG_FILE} ${UPTIME}"
 else
